@@ -1,0 +1,32 @@
+chat-data-fromzero workshop files created
+
+D:\workshops\chat-data-fromzero\index.html
+D:\workshops\chat-data-fromzero\app.css
+D:\workshops\chat-data-fromzero\app.js
+D:\workshops\chat-data-fromzero\README.md
+D:\workshops\chat-data-fromzero\requirements.txt
+D:\workshops\chat-data-fromzero\_DONE.txt
+D:\workshops\chat-data-fromzero\_gen_index.py
+
+D:\workshops\chat-data-fromzero\data\practice_chat.txt
+
+D:\workshops\chat-data-fromzero\starter\README.md
+
+D:\workshops\chat-data-fromzero\my-lab\.gitkeep
+
+D:\workshops\chat-data-fromzero\solutions\01_read_file.py
+D:\workshops\chat-data-fromzero\solutions\02_parse_messages.py
+D:\workshops\chat-data-fromzero\solutions\03_count_people.py
+D:\workshops\chat-data-fromzero\solutions\04_word_freq.py
+D:\workshops\chat-data-fromzero\solutions\05_categories.py
+D:\workshops\chat-data-fromzero\solutions\06_voice_duration.py
+D:\workshops\chat-data-fromzero\solutions\07_build_dashboard.py
+D:\workshops\chat-data-fromzero\solutions\dashboard.html
+
+Notes:
+- 27 article pages, 67 cards in index.html
+- Core needs stdlib only; Chart.js via CDN in browser
+- pymupdf listed as optional comment in requirements.txt
+- User types scripts in my-lab/; solutions/ for compare after trying
+- No git push performed
+- habit-pwa / DailyLog not touched

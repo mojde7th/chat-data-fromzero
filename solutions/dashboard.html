@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat Data Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+body{margin:0;font-family:Tahoma,sans-serif;background:#0b1016;color:#e8eef5}
+main{max-width:960px;margin:0 auto;padding:20px}
+h1{font-size:1.2rem}
+.grid{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:800px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:#121a22;border:1px solid #2a3542;border-radius:12px;padding:12px}
+canvas{max-height:280px}
+.meta{color:#8fa3b8;font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+  <h1>داشبورد دادهٔ چت تمرین</h1>
+  <p class="meta">پیام‌ها: 54 — ویس‌ها: 5</p>
+  <div class="grid">
+    <div class="card"><canvas id="cPeople"></canvas></div>
+    <div class="card"><canvas id="cWords"></canvas></div>
+    <div class="card"><canvas id="cCats"></canvas></div>
+    <div class="card"><canvas id="cVoice"></canvas></div>
+  </div>
+</main>
+<script>
+const D = {"people_labels": ["هستی آریا", "مژده", "هستی", "سپی", "یاسمن", "نیاز", "مهسا", "کانی", "منیر", "سپیده"], "people_values": [6, 6, 6, 6, 6, 5, 5, 5, 5, 4], "words_labels": ["عادت", "دقیقه", "سه", "خواب", "کار", "کوچکم", "امروز", "کم", "کوتاه", "کسی", "شروع", "فردا"], "words_values": [11, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4], "cats_labels": ["عادت", "مطالعه", "خواب", "تمرکز", "سایر", "ورزش", "ترس"], "cats_values": [12, 8, 8, 5, 22, 4, 5], "voice_labels": ["سپی", "کانی"], "voice_values": [255, 135], "msg_count": 54, "voice_count": 5};
+const mk = (id, type, labels, values, label) => new Chart(document.getElementById(id), {
+  type,
+  data: { labels, datasets: [{ label, data: values, backgroundColor: ['#7ec8ce','#7dcea0','#e2b657','#e07a7a','#cbb6f0','#6db3f2','#f0b429','#3ecf8e'] }] },
+  options: { plugins: { legend: { display: type === 'pie' } }, scales: type === 'pie' ? {} : { y: { beginAtZero: true } } }
+});
+mk('cPeople', 'bar', D.people_labels, D.people_values, 'پیام');
+mk('cWords', 'bar', D.words_labels, D.words_values, 'واژه');
+mk('cCats', 'pie', D.cats_labels, D.cats_values, 'دسته');
+mk('cVoice', 'bar', D.voice_labels, D.voice_values, 'ثانیه ویس');
+</script>
+</body>
+</html>

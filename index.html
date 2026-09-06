@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Chat Data از صفر — تا نمودار</title>
+<link rel="stylesheet" href="app.css"/>
+</head>
+<body>
+<div class="topbar">
+  <div class="row">
+    <button id="btnReadTop">این صفحه را خواندم</button>
+    <button id="btnNextTop">بعدیِ نخوانده</button>
+    <button id="btnOnlyUnread">فقط نخوانده‌ها</button>
+    <button id="btnReset">پاک کردن تیک‌ها</button>
+  </div>
+</div>
+<div class="app">
+<aside class="side">
+  <div class="brand">
+    <strong>Chat Data از صفر</strong>
+    <small>اصطلاح ترجمه نمی‌شود · گام‌ها ریز</small>
+    <div class="prog"><i></i></div>
+    <small id="readCount">0</small>
+    <div class="unread-box" id="unreadBox"></div>
+  </div>
+  <div class="tabs">
+    <button class="on" data-tab="all">همه</button>
+    <button class="" data-tab="intro">شروع</button>
+    <button class="" data-tab="install">نصب</button>
+    <button class="" data-tab="editor">ادیتور</button>
+    <button class="" data-tab="data">داده</button>
+    <button class="" data-tab="arch">معماری</button>
+    <button class="" data-tab="s01">۰۱</button>
+    <button class="" data-tab="s02">۰۲</button>
+    <button class="" data-tab="s03">۰۳</button>
+    <button class="" data-tab="s04">۰۴</button>
+    <button class="" data-tab="s05">۰۵</button>
+    <button class="" data-tab="s06">۰۶</button>
+    <button class="" data-tab="s07">۰۷</button>
+    <button class="" data-tab="adv">پیشرفته</button>
+    <button class="" data-tab="say">روایت</button>
+    <button class="" data-tab="hw">تمرین</button>
+  </div>
+
+  <div class="grp open" data-tab="intro">
+    <button>شروع</button>
+    <ul>
+      <li><a href="#start"><i class="dot"></i>چطور از این کارگاه استفاده کنی</a></li>
+      <li><a href="#canvas"><i class="dot"></i>بوم کانواس چیست و چیست نیست</a></li>
+      <li><a href="#rules"><i class="dot"></i>قوانین ریزگام و لب</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="install">
+    <button>نصب</button>
+    <ul>
+      <li><a href="#pycheck"><i class="dot"></i>نسخه پایتون را چک کن</a></li>
+      <li><a href="#pyinstall"><i class="dot"></i>نصب پایتون از سایت رسمی</a></li>
+      <li><a href="#psopen"><i class="dot"></i>پاورشل و پوشه لب</a></li>
+      <li><a href="#pipnote"><i class="dot"></i>درباره پکیج و نیازمندی</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="editor">
+    <button>ادیتور</button>
+    <ul>
+      <li><a href="#editor"><i class="dot"></i>باز کردن پوشه در ادیتور</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="data">
+    <button>داده</button>
+    <ul>
+      <li><a href="#dataset"><i class="dot"></i>فایل تمرین چت را بشناس</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="arch">
+    <button>معماری</button>
+    <ul>
+      <li><a href="#arch"><i class="dot"></i>خط لوله از متن خام تا داشبورد</a></li>
+      <li><a href="#canon"><i class="dot"></i>کانن یعنی چه</a></li>
+      <li><a href="#flush"><i class="dot"></i>فلش چرا لازم است</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="s01">
+    <button>اسکریپت ۰۱</button>
+    <ul>
+      <li><a href="#s01a"><i class="dot"></i>ساخت فایل خواندن</a></li>
+      <li><a href="#s01b"><i class="dot"></i>اجرای خواندن فایل</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="s02">
+    <button>اسکریپت ۰۲</button>
+    <ul>
+      <li><a href="#s02a"><i class="dot"></i>ساخت پارس پیام</a></li>
+      <li><a href="#s02b"><i class="dot"></i>تابع کانن را بنویس</a></li>
+      <li><a href="#s02c"><i class="dot"></i>فلش و حلقه خط ها</a></li>
+      <li><a href="#s02d"><i class="dot"></i>اجرای پارس</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="s03">
+    <button>اسکریپت ۰۳</button>
+    <ul>
+      <li><a href="#s03a"><i class="dot"></i>شمارش نفرات</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="s04">
+    <button>اسکریپت ۰۴</button>
+    <ul>
+      <li><a href="#s04a"><i class="dot"></i>بسامد واژه</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="s05">
+    <button>اسکریپت ۰۵</button>
+    <ul>
+      <li><a href="#s05a"><i class="dot"></i>دسته بندی موضوعی</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="s06">
+    <button>اسکریپت ۰۶</button>
+    <ul>
+      <li><a href="#s06a"><i class="dot"></i>مدت ویس</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="s07">
+    <button>اسکریپت ۰۷</button>
+    <ul>
+      <li><a href="#s07a"><i class="dot"></i>ساخت داشبورد</a></li>
+      <li><a href="#compare"><i class="dot"></i>مقایسه با جواب</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="adv">
+    <button>پیشرفته</button>
+    <ul>
+      <li><a href="#pdf"><i class="dot"></i>پی دی اف واقعی و وارونگی فارسی</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="say">
+    <button>روایت</button>
+    <ul>
+      <li><a href="#say"><i class="dot"></i>اگر پرسیدند چطور ساختی</a></li>
+    </ul>
+  </div>
+  <div class="grp open" data-tab="hw">
+    <button>تمرین</button>
+    <ul>
+      <li><a href="#hw"><i class="dot"></i>تکلیف بک اند کوچک</a></li>
+    </ul>
+  </div>
+</aside>
+
+<main class="main">
+  <article class="page" id="start">
+    <p class="kicker">شروع</p>
+    <h1>این کارگاه یک مسیر خط به خط است، نه یک سخنرانی</h1>
+<p class="say">هدف این است که از صفر، روی ویندوز، متن خام یک چت را بخوانی، پیام ها را جدا کنی، اسم ها را یکدست کنی، بشمری، دسته بندی کنی، و در آخر یک داشبورد با <i class="en">Chart.js</i> در مرورگر ببینی.</p><p class="say">هر صفحه را بخوان، کار همان صفحه را انجام بده، بعد دکمه بالا را بزن:</p><pre class="ltr" dir="ltr">این صفحه را خواندم</pre><p class="say">اگر چیزی را نیمه کاره رد کنی، بعدا گیج می شوی. ترتیب صفحات مهم است.</p><div class="card">
+<h2>قانون واژه ها</h2>
+<p class="do">اصطلاح فنی را ترجمه نکن</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>کلمه هایی مثل پایتون و پاورشل و کانن را همان طور که هستند در بلوک کد می بینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر واژه ای را به فارسی ساختگی عوض کنی، موقع جستجو و خطا خواندن گیر می کنی.</div>
+<div class="note">در خط فارسی فقط فارسی بنویس. دستور و مسیر و اسم فایل را در بلوک جدا بگذار.</div>
+</div>
+    <div class="navp"><span></span><a href="#canvas" data-go="canvas">بعدی</a></div>
+  </article>
+  <article class="page" id="canvas">
+    <p class="kicker">شروع</p>
+    <h1>بوم کانواس مال رابط ادیتور است؛ تحویل تو فایل اچ تی ام ال است</h1>
+<p class="say">گاهی در ادیتور یک پنل کناری به نام بوم می بینی. آن یک رابط کمکی داخل <i class="en">Cursor</i> است. آن را با خروجی کارگاه اشتباه نگیر.</p><div class="card">
+<h2>تحویل واقعی تو</h2>
+<p class="do">این فایل را در مرورگر باز کن</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\index.html</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>مرورگر صفحه کارگاه را با سایدبار و تیک مطالعه نشان می دهد.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر صفحه سفید است، مسیر فایل را اشتباه باز کرده ای یا روی پوشه کلیک کرده ای نه روی خود فایل.</div>
+<div class="note">خروجی نهایی تحلیل تو هم یک فایل <i class="en">HTML</i> جدا به نام داشبورد است که خودت با اسکریپت می سازی.</div>
+</div><div class="card">
+<h2>بوم را با داشبورد قاطی نکن</h2>
+<p class="do">یادت بماند</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>بوم برای گفتگو و نمایش کمکی داخل ادیتور است.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>داشبورد چت را باید با دابل کلیک روی فایل اچ تی ام ال در مرورگر باز کنی.</div>
+</div>
+    <div class="navp"><a href="#start" data-go="start">قبلی</a><a href="#rules" data-go="rules">بعدی</a></div>
+  </article>
+  <article class="page" id="rules">
+    <p class="kicker">شروع</p>
+    <h1>تو تایپ می کنی؛ عامل به جایت اجرا نکرده فرض نکن</h1>
+<p class="say">اسکریپت ها را خودت داخل پوشه لب می نویسی و اجرا می کنی. پوشه جواب ها فقط برای مقایسه بعد از تلاش است.</p><div class="card">
+<h2>پوشه کار تو</h2>
+<p class="do">همین مسیر را بساز و همان جا بمان</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\my-lab</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>همه فایل های تمرینی ات اینجاست.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر جای دیگری ساختی، مسیر نسبی به پوشه داده می شکند.</div>
+<div class="note">زود به پوشه جواب ها نگاه نکن.</div>
+</div><div class="card">
+<h2>هر کارت سه لایه دارد</h2>
+<p class="do">اول انجام بده، بعد بخوان</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>لایه یک می گوید بعد از دستور چه باید ببینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>لایه دو برای وقتی است که خطا آمد یا خروجی عجیب بود.</div>
+<div class="note">یادداشت عمیق اختیاری است؛ اگر عجله داری می توانی ردش کنی.</div>
+</div>
+    <div class="navp"><a href="#canvas" data-go="canvas">قبلی</a><a href="#pycheck" data-go="pycheck">بعدی</a></div>
+  </article>
+  <article class="page" id="pycheck">
+    <p class="kicker">نصب</p>
+    <h1>اول ببین پایتون داری یا نه</h1>
+<div class="card">
+<h2>پاورشل را باز کن</h2>
+<p class="do">کلید ویندوز را نگه دار و ایکس را بزن، بعد ویندوز پاورشل را باز کن</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>یک پنجره سیاه یا آبی با چشمک زن باز می شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر ترمینال دیگری باز شد هم اشکالی ندارد؛ مهم این است که فرمان بپذیرد.</div>
+</div><div class="card">
+<h2>نسخه را بپرس</h2>
+<p class="do">این را تایپ کن</p>
+<pre class="ltr" dir="ltr">python --version</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>هنوز اینتر نزده ای؛ فقط متن را نوشته ای.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر به جای پایتون چیز دیگری دیدی، متن را پاک کن و دوباره حرف به حرف بنویس.</div>
+</div><div class="card">
+<h2>اینتر را بزن</h2>
+<p class="do">الان کلید اینتر را فشار بده</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید چیزی شبیه شماره نسخه بیاید.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر گفت شناخته نشد، یعنی پایتون در مسیر سیستم نیست یا نصب نشده. برو صفحه بعد.</div>
+</div><div class="card">
+<h2>خروجی خوب چیست</h2>
+<p class="do">حداقل نسخه سه نقطه ده</p>
+<pre class="ltr" dir="ltr">Python 3.10.11</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>عدد اصلی سه است و عدد دوم ده یا بالاتر.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر سه نقطه نه یا کمتر دیدی، بهتر است نسخه جدید نصب کنی.</div>
+<div class="note">بعضی سیستم ها به جای <i class="en">python</i> باید <i class="en">py --version</i> بزنند. اگر اولی شکست، دومی را هم امتحان کن.</div>
+</div>
+    <div class="navp"><a href="#rules" data-go="rules">قبلی</a><a href="#pyinstall" data-go="pyinstall">بعدی</a></div>
+  </article>
+  <article class="page" id="pyinstall">
+    <p class="kicker">نصب</p>
+    <h1>اگر نسخه نبود یا کهنه بود، از سایت رسمی نصب کن</h1>
+<div class="card">
+<h2>سایت را باز کن</h2>
+<p class="do">در مرورگر این آدرس را باز کن</p>
+<pre class="ltr" dir="ltr">https://www.python.org/downloads/</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>دکمه دانلود نسخه ویندوز را می بینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر سایت باز نشد، اینترنت یا فیلتر را چک کن.</div>
+<div class="note">از فروشگاه های ناشناس نصب کننده نگیر.</div>
+</div><div class="card">
+<h2>نصب کننده را اجرا کن</h2>
+<p class="do">فایل دانلودشده را باز کن</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>پنجره نصب پایتون می آید.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر کنترل حساب کاربری پرسید، تأیید کن.</div>
+</div><div class="card">
+<h2>تیک مسیر را بزن</h2>
+<p class="do">قبل از ادامه، این گزینه را حتما روشن کن</p>
+<pre class="ltr" dir="ltr">Add python.exe to PATH</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>بدون این تیک، پاورشل فرمان را پیدا نمی کند.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر تیک را ندیدی، پایین پنجره اول نصب را دوباره نگاه کن.</div>
+<div class="note">بعد از نصب، همه پنجره های پاورشل قدیمی را ببند و یکی تازه باز کن.</div>
+</div><div class="card">
+<h2>دوباره نسخه را بگیر</h2>
+<p class="do">پاورشل تازه، بعد این دو خط</p>
+<pre class="ltr" dir="ltr">python --version
+pip --version</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>هر دو باید شماره بدهند.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر هنوز شناخته نشد، سیستم را یک بار از نو راه بینداز و دوباره تست کن.</div>
+</div>
+    <div class="navp"><a href="#pycheck" data-go="pycheck">قبلی</a><a href="#psopen" data-go="psopen">بعدی</a></div>
+  </article>
+  <article class="page" id="psopen">
+    <p class="kicker">نصب</p>
+    <h1>پوشه تمرین را بساز و داخلش برو</h1>
+<div class="card">
+<h2>ساختن پوشه ها</h2>
+<p class="do">این را کامل تایپ کن و اینتر بزن</p>
+<pre class="ltr" dir="ltr">mkdir D:\workshops\chat-data-fromzero\my-lab</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>اگر پوشه از قبل بود، ممکن است خطا یا پیام بی ضرر ببینی؛ مهم وجود پوشه است.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر گفت درایو پیدا نشد، مطمئن شو درایو دی وجود دارد.</div>
+</div><div class="card">
+<h2>ورود به پوشه</h2>
+<p class="do">این را بزن و اینتر</p>
+<pre class="ltr" dir="ltr">cd D:\workshops\chat-data-fromzero\my-lab</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>خط فرمان باید نشان دهد داخل لب هستی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>با این فرمان محل فعلی را ببین.</div>
+</div><div class="card">
+<h2>کجا هستی</h2>
+<p class="do">محل فعلی را چاپ کن</p>
+<pre class="ltr" dir="ltr">pwd</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید مسیر لب را ببینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>در بعضی پاورشل ها <i class="en">pwd</i> کار می کند؛ اگر نه، بزن:</div>
+</div><pre class="ltr" dir="ltr">Get-Location</pre><div class="card">
+<h2>لیست فایل ها</h2>
+<p class="do">ببین داخل لب چیست</p>
+<pre class="ltr" dir="ltr">dir</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>احتمالا خالی است. طبیعی است.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر فایل های جواب را اینجا کپی کرده باشی، اول تمرین را خراب کرده ای؛ آن ها را بیرون ببر.</div>
+</div>
+    <div class="navp"><a href="#pyinstall" data-go="pyinstall">قبلی</a><a href="#pipnote" data-go="pipnote">بعدی</a></div>
+  </article>
+  <article class="page" id="pipnote">
+    <p class="kicker">نصب</p>
+    <h1>برای هسته کارگاه فعلا چیزی با پیپ نصب نکن</h1>
+<p class="say">تا پایان داشبورد تمرین، فقط کتابخانه خود پایتون کافی است. نمودار را مرورگر با <i class="en">Chart.js</i> از اینترنت می کشد.</p><div class="card">
+<h2>فایل نیازمندی را ببین</h2>
+<p class="do">اختیاری؛ فقط بخوان</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\requirements.txt</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>می بینی که هسته خالی است و یک خط نظری برای پی دی اف دارد.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر اشتباها چیزی نصب کردی، برای این کارگاه لازم نیست پاکش کنی؛ فقط گیج نشو.</div>
+<div class="note">فصل اختیاری بعدا از تو می خواهد <i class="en">pip install pymupdf</i> بزنی.</div>
+</div>
+    <div class="navp"><a href="#psopen" data-go="psopen">قبلی</a><a href="#editor" data-go="editor">بعدی</a></div>
+  </article>
+  <article class="page" id="editor">
+    <p class="kicker">ادیتور</p>
+    <h1>پوشه کارگاه را در ادیتور باز کن، نه فقط یک فایل تکی</h1>
+<div class="card">
+<h2>با مکان نما</h2>
+<p class="do">اگر مکان نما داری</p>
+<pre class="ltr" dir="ltr">File → Open Folder → D:\workshops\chat-data-fromzero</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>در سایدبار باید data و my-lab و solutions را ببینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر فقط یک فایل باز شد، دوباره از منوی فایل گزینه باز کردن پوشه را بزن.</div>
+</div><div class="card">
+<h2>با کد وی اس</h2>
+<p class="do">اگر کد وی اس داری</p>
+<pre class="ltr" dir="ltr">File → Open Folder → D:\workshops\chat-data-fromzero</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>همان ساختار پوشه باید در اکسپلورر بیاید.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر فارسی ها را به هم ریخته دیدی، پایین راست وضعیت یونیکد را چک کن؛ فایل باید با یوتی اف هشت ذخیره شود.</div>
+</div><div class="card">
+<h2>ترمینال داخل ادیتور</h2>
+<p class="do">ترمینال را باز کن و برو لب</p>
+<pre class="ltr" dir="ltr">cd D:\workshops\chat-data-fromzero\my-lab</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>از همین جا اسکریپت ها را اجرا می کنی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر ترمینال در مسیر دیگری است، همان سی دی را دوباره بزن.</div>
+</div>
+    <div class="navp"><a href="#pipnote" data-go="pipnote">قبلی</a><a href="#dataset" data-go="dataset">بعدی</a></div>
+  </article>
+  <article class="page" id="dataset">
+    <p class="kicker">داده</p>
+    <h1>یک خروجی ساختگی شبیه تلگرام با چند اسم مشابه</h1>
+<p class="say">فایل تمرین از قبل ساخته شده. تو نباید متن را برعکس کنی. فارسی داخل فایل خوانا است.</p><div class="card">
+<h2>مسیر فایل</h2>
+<p class="do">در ادیتور این را باز کن و فقط بخوان</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\data\practice_chat.txt</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>حدود چهل تا شصت پیام می بینی با تاریخ و ساعت.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر فایل نبود، کارگاه ناقص کپی شده است.</div>
+</div><div class="card">
+<h2>شکل هر پیام</h2>
+<p class="do">الگوی هدر را حفظ کن</p>
+<pre class="ltr" dir="ltr">Hasti Arya, [01.09.2025 09:12]
+سلام به همه...</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>خط اول اسم و تاریخ است. خط های بعد متن پیام است تا هدر بعدی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر هدر را دستکاری کنی، پارس می شکند.</div>
+</div><div class="card">
+<h2>چرا دو اسم شبیه هم داریم</h2>
+<p class="do">عمدی است</p>
+<pre class="ltr" dir="ltr">Hasti Arya
+hasti
+SEPI
+sepide-art</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>بدون کانن، شمارش نفرات دروغ می گوید.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>صفحه معماری و اسکریپت دوم این موضوع را عمیق باز می کند.</div>
+<div class="note">چند خط ویس و چند واکنش کوتاه هم هست که باید نادیده گرفته شوند.</div>
+</div>
+    <div class="navp"><a href="#editor" data-go="editor">قبلی</a><a href="#arch" data-go="arch">بعدی</a></div>
+  </article>
+  <article class="page" id="arch">
+    <p class="kicker">معماری</p>
+    <h1>کل مسیر داده را یک بار در ذهن بچین</h1>
+<pre class="ltr" dir="ltr">practice_chat.txt
+        |
+        |  read text (utf-8)
+        v
+   raw lines
+        |
+        |  detect header  Name, [DD.MM.YYYY HH:MM]
+        |  canon(name)     unify display names
+        |  flush()         finish previous message
+        v
+   messages = [{who, date, time, text}, ...]
+        |
+        +--> count by who
+        +--> word frequency
+        +--> categories by keywords
+        +--> voice durations
+        v
+   numbers / lists
+        |
+        |  build HTML + Chart.js CDN
+        v
+   dashboard.html  (open in browser)</pre><div class="card">
+<h2>چرا لیست پیام ها مرکز است</h2>
+<p class="do">همه آمار از یک لیست واحد می آید</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>اگر پارس غلط باشد، بقیه نمودارها هم غلط اند.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>هیچ وقت برای هر آمار، فایل را از صفر با قواعد متفاوت نخوان؛ همان لیست را دوباره مصرف کن.</div>
+<div class="note">در تمرین های اول برای سادگی کد را تکرار می کنیم؛ بعدا می توانی تابع مشترک بسازی.</div>
+</div>
+    <div class="navp"><a href="#dataset" data-go="dataset">قبلی</a><a href="#canon" data-go="canon">بعدی</a></div>
+  </article>
+  <article class="page" id="canon">
+    <p class="kicker">معماری</p>
+    <h1>اسم های ظاهری مختلف را به یک برچسب رسمی برسان</h1>
+<p class="say">در چت واقعی یک نفر چند جور اسم می گذارد: کامل، کوتاه، فونت خاص، نیمه انگلیسی. اگر هر رشته را نفر جدا بگیری، آمار دروغ می شود.</p><div class="card">
+<h2>مثال این کارگاه</h2>
+<p class="do">این ورودی ها باید یک نفر شوند</p>
+<pre class="ltr" dir="ltr">Hasti Arya  ->  هستی آریا
+hasti       ->  هستی
+SEPI        ->  سپی
+sepide-art  ->  سپیده</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>تابع کانن قبل از ذخیره پیام صدا زده می شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر فقط حرف کوچک و بزرگ را یکی کنی کافی نیست؛ بعضی اسم ها کلا رشته دیگری هستند.</div>
+<div class="note">کانن را دستی و خوانا بنویس؛ برای مبتدی شفاف تر از مدل پیچیده است.</div>
+</div>
+    <div class="navp"><a href="#arch" data-go="arch">قبلی</a><a href="#flush" data-go="flush">بعدی</a></div>
+  </article>
+  <article class="page" id="flush">
+    <p class="kicker">معماری</p>
+    <h1>پیام قبلی را وقتی تمام می شود در لیست بریز</h1>
+<p class="say">تو خط به خط جلو می روی. تا وقتی هدر بعدی نیامده، بدنه ها مال پیام فعلی اند. وقتی هدر جدید دیدی، اول باید پیام قبلی را ببندی.</p><div class="card">
+<h2>الگوی ذهنی</h2>
+<p class="do">همین ترتیب را حفظ کن</p>
+<pre class="ltr" dir="ltr">if line is header:
+    flush()          # finish previous
+    cur = new message
+else:
+    append line to cur body
+# end of file
+flush()              # finish last message</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>بدون فلش آخر فایل، آخرین پیام برای همیشه گم می شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر فلش را قبل از ساختن پیام جدید ننویسی، دو پیام قاطی می شوند.</div>
+<div class="note">واکنش های تک کاراکتری را می توانی داخل فلش دور بریزی.</div>
+</div>
+    <div class="navp"><a href="#canon" data-go="canon">قبلی</a><a href="#s01a" data-go="s01a">بعدی</a></div>
+  </article>
+  <article class="page" id="s01a">
+    <p class="kicker">اسکریپت ۰۱</p>
+    <h1>فایل اول را بساز و مسیر را درست بده</h1>
+<div class="card">
+<h2>فایل خالی بساز</h2>
+<p class="do">داخل لب فایل تازه بساز</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\my-lab\01_read_file.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>فایل در سایدبار ادیتور ظاهر می شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر پسوند پی وای ندادی، ادیتور ممکن است آن را متن ساده بگیرد.</div>
+</div><div class="card">
+<h2>کد را خودت تایپ کن</h2>
+<p class="do">این محتوا را خط به خط بنویس</p>
+<pre class="ltr" dir="ltr"># -*- coding: utf-8 -*-
+import sys
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+from pathlib import Path
+
+path = Path(__file__).resolve().parent.parent / "data" / "practice_chat.txt"
+text = path.read_text(encoding="utf-8")
+lines = text.splitlines()
+print("path:", path)
+print("chars:", len(text))
+print("lines:", len(lines))
+print("--- first 12 lines ---")
+for i, line in enumerate(lines[:12], start=1):
+    print(f"{i:02d}| {line}")</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>داری فقط می نویسی؛ هنوز اجرا نکرده ای.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر کپی کردی اشکال ندارد، ولی بهتر است تایپ کنی تا مسیر را بفهمی.</div>
+<div class="note"><i class="en">Path(__file__).resolve().parent.parent</i> یعنی از لب یک طبقه برو بالا تا ریشه کارگاه.</div>
+</div>
+    <div class="navp"><a href="#flush" data-go="flush">قبلی</a><a href="#s01b" data-go="s01b">بعدی</a></div>
+  </article>
+  <article class="page" id="s01b">
+    <p class="kicker">اسکریپت ۰۱</p>
+    <h1>اسکریپت را از داخل لب اجرا کن</h1>
+<div class="card">
+<h2>رفتن به لب</h2>
+<p class="do">اگر نیستی، برو</p>
+<pre class="ltr" dir="ltr">cd D:\workshops\chat-data-fromzero\my-lab</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>مسیر لب در خط فرمان دیده می شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>بدون این کار، پایتون فایل را پیدا نمی کند.</div>
+</div><div class="card">
+<h2>اجرا</h2>
+<p class="do">تایپ کن و اینتر بزن</p>
+<pre class="ltr" dir="ltr">python 01_read_file.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید مسیر، تعداد کاراکتر، تعداد خط، و دوازده خط اول چاپ شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر فایل پیدا نشد، یا اسکریپت بیرون لب است یا پوشه data جابه جا شده.</div>
+<div class="note">اگر فارسی مربع شد، همان خطوط ریکانفیگ ابتدای فایل را از قلم انداخته ای.</div>
+</div><div class="card">
+<h2>معنی خروجی</h2>
+<p class="do">خطوط اول باید با هدر اسم شروع شوند</p>
+<pre class="ltr" dir="ltr">01| Hasti Arya, [01.09.2025 09:12]</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>یعنی خواندن یوتی اف هشت درست بوده و فایل برعکس نیست.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر متن فارسی برعکس بود، فایل را با ادیتور اشتباه ذخیره کرده ای؛ از فایل data کارگاه دوباره استفاده کن.</div>
+</div>
+    <div class="navp"><a href="#s01a" data-go="s01a">قبلی</a><a href="#s02a" data-go="s02a">بعدی</a></div>
+  </article>
+  <article class="page" id="s02a">
+    <p class="kicker">اسکریپت ۰۲</p>
+    <h1>فایل دوم را بساز؛ اینجا کانن و فلش زنده می شوند</h1>
+<div class="card">
+<h2>فایل تازه</h2>
+<p class="do">بساز</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\my-lab\02_parse_messages.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>فایل خالی آماده است.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اسم فایل را دقیق همین بگذار تا بعدا گم نشوی.</div>
+</div><div class="card">
+<h2>ایمپورت و هدر</h2>
+<p class="do">اول این بخش را بنویس</p>
+<pre class="ltr" dir="ltr"># -*- coding: utf-8 -*-
+import sys
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+import re
+from pathlib import Path
+
+path = Path(__file__).resolve().parent.parent / "data" / "practice_chat.txt"
+raw = path.read_text(encoding="utf-8")
+HEADER = re.compile(r"^(.+?),\s*\[(\d{2}\.\d{2}\.\d{4})\s+(\d{2}:\d{2})\]\s*$")
+SKIP_BODY = {"❤", "👍", "In reply to this message"}</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>الگوی هدر سه گروه می گیرد: اسم، تاریخ، ساعت.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر در <i class="en">re</i> بک اسلش ها را کم بگذاری، هدر هیچ وقت مچ نمی شود.</div>
+<div class="note">ماژول <i class="en">re</i> برای تشخیص الگو روی رشته است.</div>
+</div>
+    <div class="navp"><a href="#s01b" data-go="s01b">قبلی</a><a href="#s02b" data-go="s02b">بعدی</a></div>
+  </article>
+  <article class="page" id="s02b">
+    <p class="kicker">اسکریپت ۰۲</p>
+    <h1>اسم های شبیه را یکی کن</h1>
+<div class="card">
+<h2>تابع کانن</h2>
+<p class="do">زیر ایمپورت ها این را اضافه کن</p>
+<pre class="ltr" dir="ltr">def canon(name: str) -> str:
+    s = name.strip()
+    low = s.lower()
+    # دو هستی و دو سپیده جدا
+    if s == "Hasti Arya" or "arya" in low:
+        return "هستی آریا"
+    if low == "hasti":
+        return "هستی"
+    if s == "SEPI":
+        return "سپی"
+    if low.startswith("sepide"):
+        return "سپیده"
+    if s == "Niaz":
+        return "نیاز"
+    if s == "Mojde":
+        return "مژده"
+    if "Tamjidi" in s:
+        return "مهسا"
+    if "Latifi" in s:
+        return "یاسمن"
+    if "Cani" in s:
+        return "کانی"
+    if s == "Monir":
+        return "منیر"
+    return s</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>هر اسم نمایشی به یک برچسب فارسی رسمی می رسد.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر کسی را جا انداختی، در خروجی همان اسم لاتین خام می ماند؛ بعدا در شمارش می فهمی.</div>
+<div class="note">ترتیب شرط ها مهم است؛ خاص ترها را زودتر بگذار.</div>
+</div>
+    <div class="navp"><a href="#s02a" data-go="s02a">قبلی</a><a href="#s02c" data-go="s02c">بعدی</a></div>
+  </article>
+  <article class="page" id="s02c">
+    <p class="kicker">اسکریپت ۰۲</p>
+    <h1>پیام را جمع کن، ببند، بعدی را باز کن</h1>
+<div class="card">
+<h2>فلش و حلقه</h2>
+<p class="do">ادامه فایل را کامل تایپ کن</p>
+<pre class="ltr" dir="ltr">messages = []
+cur = None
+
+def flush():
+    global cur
+    if cur is None:
+        return
+    body = "\n".join(cur["body_lines"]).strip()
+    if body and body not in SKIP_BODY:
+        messages.append({
+            "who": cur["who"],
+            "date": cur["date"],
+            "time": cur["time"],
+            "text": body,
+        })
+    cur = None
+
+for line in raw.splitlines():
+    m = HEADER.match(line)
+    if m:
+        flush()
+        cur = {
+            "who": canon(m.group(1)),
+            "date": m.group(2),
+            "time": m.group(3),
+            "body_lines": [],
+        }
+        continue
+    if cur is None:
+        continue
+    if line.strip() == "":
+        continue
+    cur["body_lines"].append(line)
+
+flush()
+print("messages:", len(messages))
+for msg in messages[:8]:
+    preview = msg["text"].replace("\n", " ")[:40]
+    print(f"{msg['time']} | {msg['who']} | {preview}")</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>الان منطق کامل پارس را داری.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر پیام ها صفر شد، الگوی هدر با فایل یکی نیست.</div>
+<div class="note">واکنش های قلب و لایک وارد لیست نمی شوند چون در اسکیپ هستند.</div>
+</div>
+    <div class="navp"><a href="#s02b" data-go="s02b">قبلی</a><a href="#s02d" data-go="s02d">بعدی</a></div>
+  </article>
+  <article class="page" id="s02d">
+    <p class="kicker">اسکریپت ۰۲</p>
+    <h1>ببین چند پیام سالم ساخته شد</h1>
+<div class="card">
+<h2>اجرا</h2>
+<p class="do">بزن</p>
+<pre class="ltr" dir="ltr">python 02_parse_messages.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید تعداد پیام ها حدود پنجاه و چند باشد و اسم های فارسی کانن شده در پیش نمایش بیاید.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر هنوز hasti جدا از هستی دیدی، شرط کانن را غلط نوشته ای.</div>
+<div class="note">اگر آخرین پیام نیست، فلش انتهای فایل را فراموش کرده ای.</div>
+</div><div class="card">
+<h2>چک ذهنی کانن</h2>
+<p class="do">در خروجی نباید همزمان این دو برچسب لاتین بمانی</p>
+<pre class="ltr" dir="ltr">Hasti Arya
+hasti
+SEPI
+sepide-art</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید هستی و سپی ببینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر یکی شان ماند، همان شاخه شرط را تعمیر کن و دوباره اجرا کن.</div>
+</div>
+    <div class="navp"><a href="#s02c" data-go="s02c">قبلی</a><a href="#s03a" data-go="s03a">بعدی</a></div>
+  </article>
+  <article class="page" id="s03a">
+    <p class="kicker">اسکریپت ۰۳</p>
+    <h1>از لیست پیام، تعداد پیام هر نفر را دربیار</h1>
+<div class="card">
+<h2>فایل سوم</h2>
+<p class="do">بساز</p>
+<pre class="ltr" dir="ltr">my-lab\03_count_people.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>می توانی از روی فایل دوم کپی کنی و بخش چاپ آخر را عوض کنی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر از صفر می نویسی هم خوب است؛ تکرار پارس عمدی است تا دستت روان شود.</div>
+</div><div class="card">
+<h2>شمارش</h2>
+<p class="do">بعد از ساخت messages این را بگذار</p>
+<pre class="ltr" dir="ltr">import collections
+counts = collections.Counter(msg["who"] for msg in messages)
+print("people:", len(counts))
+for who, n in counts.most_common():
+    print(f"{n:3d}  {who}")</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b><i class="en">Counter</i> دیکشنری شمارش است.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر تعداد نفرات بیشتر از هشت شد، کانن ناقص است.</div>
+<div class="note">ماژول <i class="en">collections</i> کتابخانه استاندارد است؛ نصب جدا نمی خواهد.</div>
+</div><div class="card">
+<h2>اجرا</h2>
+<p class="do">بزن</p>
+<pre class="ltr" dir="ltr">python 03_count_people.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید هشت نفر و عدد پیام هر کدام را ببینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر سپی دو تکه شد، شرط سپیده را درست کن.</div>
+</div>
+    <div class="navp"><a href="#s02d" data-go="s02d">قبلی</a><a href="#s04a" data-go="s04a">بعدی</a></div>
+  </article>
+  <article class="page" id="s04a">
+    <p class="kicker">اسکریپت ۰۴</p>
+    <h1>واژه های فارسی معنی دار را بشمار</h1>
+<div class="card">
+<h2>فایل چهارم</h2>
+<p class="do">بساز</p>
+<pre class="ltr" dir="ltr">my-lab\04_word_freq.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>پایه پارس را مثل قبل نگه دار.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>ویس ها را از شمارش واژه حذف کن.</div>
+</div><div class="card">
+<h2>الگوی واژه و ایست واژه</h2>
+<p class="do">این را اضافه کن</p>
+<pre class="ltr" dir="ltr">WORD = re.compile(r"[\u0600-\u06FF]{2,}")
+STOP = set("""از در به با که این آن را هم می من تو ما شما او برای اگر یا نه تا هر چه
+است هست شد شده رو روی یک یه و اما ولی چون پس یعنی دیگه فقط بود بودم بوده
+باشه باشم کنی کنم کنید هستم هستی دارم داری داره داریم خود خودم خیلی خوب
+خوبی ها بچه همگی همین بعد قبل چیز چی کی اینکه اون الان منم """.split())</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>فقط واژه های فارسی حداقل دو حرفی گرفته می شوند.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر ایست واژه کم باشد، لیست پرتکرار پر از از و که می شود.</div>
+<div class="note">می توانی بعدا ایست واژه را غنی تر کنی.</div>
+</div><div class="card">
+<h2>حلقه شمارش</h2>
+<p class="do">روی متن پیام ها</p>
+<pre class="ltr" dir="ltr">bag = collections.Counter()
+for msg in messages:
+    text = msg["text"]
+    if text.startswith("Voice message"):
+        continue
+    for w in WORD.findall(text):
+        if w not in STOP:
+            bag[w] += 1
+print("unique words:", len(bag))
+for w, n in bag.most_common(15):
+    print(f"{n:3d}  {w}")پانزده واژه پرتکرار چاپ می شود.</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>اگر صفر دیدی، شاید پیام ها را رشته نگذاشته ای و دیکشنری است؛ فیلد متن را درست بخوان.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>خط های ویس را عمدا حذف می کنیم تا مدت و کیلوبایت قاطی واژه ها نشود.</div>
+</div><div class="card">
+<h2>اجرا</h2>
+<p class="do">بزن</p>
+<pre class="ltr" dir="ltr">python 04_word_freq.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید واژه هایی مثل عادت یا تمرکز در صدر باشند.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر همه ایست واژه اند، مجموعه استاپ را درست نساخته ای.</div>
+</div>
+    <div class="navp"><a href="#s03a" data-go="s03a">قبلی</a><a href="#s05a" data-go="s05a">بعدی</a></div>
+  </article>
+  <article class="page" id="s05a">
+    <p class="kicker">اسکریپت ۰۵</p>
+    <h1>با واژه کلید، پیام را در سطل موضوع بگذار</h1>
+<div class="card">
+<h2>فایل پنجم</h2>
+<p class="do">بساز</p>
+<pre class="ltr" dir="ltr">my-lab\05_categories.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>پارس مثل قبل؛ فقط بخش دسته اضافه می شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>کلیدها را عین واژه های موجود در تمرین بگذار.</div>
+</div><div class="card">
+<h2>نقشه دسته ها</h2>
+<p class="do">این دیکشنری را بنویس</p>
+<pre class="ltr" dir="ltr">CATEGORIES = {
+    "خواب": ["خواب", "بیدار"],
+    "ورزش": ["ورزش", "پیاده‌روی", "پیاده"],
+    "تمرکز": ["تمرکز", "تعلل", "تایمر", "اعلان"],
+    "عادت": ["عادت", "عادت‌های", "عادت‌ها"],
+    "ترس": ["ترس", "شکست", "ارائه"],
+    "مطالعه": ["مطالعه", "کتاب", "خواندم", "صفحه", "خلاصه"],
+}</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>هر پیام می تواند به چند دسته بخورد؛ در نسخه ساده اگر خورد، همان را می شماریم.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر کلیدها ضعیف باشند، بیشتر پیام ها سایر می شوند.</div>
+<div class="note">این روش یادگیری است، نه طبقه بندی کامل زبانی.</div>
+</div><div class="card">
+<h2>شمارش دسته</h2>
+<p class="do">بعد از messages</p>
+<pre class="ltr" dir="ltr">cat_counts = collections.Counter()
+for msg in messages:
+    text = msg["text"]
+    hit = False
+    for cat, keys in CATEGORIES.items():
+        if any(k in text for k in keys):
+            cat_counts[cat] += 1
+            hit = True
+    if not hit:
+        cat_counts["سایر"] += 1
+for cat, n in cat_counts.most_common():
+    print(f"{n:3d}  {cat}")</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>جدول کوچکی از موضوع ها می بینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر همه سایر شد، کلیدها با متن تمرین یکی نیستند.</div>
+</div><div class="card">
+<h2>اجرا</h2>
+<p class="do">بزن</p>
+<pre class="ltr" dir="ltr">python 05_categories.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید چند دسته مقدار غیرصفر داشته باشند.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>برای تمرین آخر کارگاه، یک دسته جدید اضافه خواهی کرد.</div>
+</div>
+    <div class="navp"><a href="#s04a" data-go="s04a">قبلی</a><a href="#s06a" data-go="s06a">بعدی</a></div>
+  </article>
+  <article class="page" id="s06a">
+    <p class="kicker">اسکریپت ۰۶</p>
+    <h1>خط ویس و خط مدت را جفت کن</h1>
+<p class="say">در داده تمرین بعد از خط ویس، یک خط شبیه این می آید:</p><pre class="ltr" dir="ltr">01:12, 255.0 KB</pre><div class="card">
+<h2>فایل ششم</h2>
+<p class="do">بساز</p>
+<pre class="ltr" dir="ltr">my-lab\06_voice_duration.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>این اسکریپت می تواند مستقل از لیست پیام کامل کار کند.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>کانن را فراموش نکن تا ویس های سپی یکی شوند.</div>
+</div><div class="card">
+<h2>منطق جفت سازی</h2>
+<p class="do">ایده را در کد پیاده کن</p>
+<pre class="ltr" dir="ltr">DUR = re.compile(r"^(\d{2}):(\d{2}),\s*[\d.]+\s*KB\s*$", re.I)
+voices = []
+cur_who = None
+expect_dur = False
+for line in raw.splitlines():
+    m = HEADER.match(line)
+    if m:
+        cur_who = canon(m.group(1))
+        expect_dur = False
+        continue
+    if line.strip() == "Voice message":
+        expect_dur = True
+        continue
+    if expect_dur:
+        d = DUR.match(line.strip())
+        if d:
+            secs = int(d.group(1)) * 60 + int(d.group(2))
+            voices.append({"who": cur_who, "seconds": secs, "raw": line.strip()})
+        expect_dur = False
+total = sum(v["seconds"] for v in voices)
+print("voice count:", len(voices))
+print("total seconds:", total)
+print("total mm:ss:", f"{total // 60:02d}:{total % 60:02d}")
+for v in voices:
+    print(f"{v['who']}  {v['seconds']}s  {v['raw']}")</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید پنج ویس و جمع حدود سیصد و نود ثانیه ببینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر صفر شد، رشته ویس را دقیق مثل فایل ننوشته ای یا فلگ انتظار را ریست کرده ای.</div>
+<div class="note">دقیقه را در شصت ضرب کن و با ثانیه جمع کن.</div>
+</div><div class="card">
+<h2>اجرا</h2>
+<p class="do">بزن</p>
+<pre class="ltr" dir="ltr">python 06_voice_duration.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>لیست ویس ها با اسم کانن شده چاپ می شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر اسم ویس ها غلط است، کانن را از فایل دوم کپی نکرده ای.</div>
+</div>
+    <div class="navp"><a href="#s05a" data-go="s05a">قبلی</a><a href="#s07a" data-go="s07a">بعدی</a></div>
+  </article>
+  <article class="page" id="s07a">
+    <p class="kicker">اسکریپت ۰۷</p>
+    <h1>عددها را داخل یک اچ تی ام ال با چارت جی اس بریز</h1>
+<div class="card">
+<h2>فایل هفتم</h2>
+<p class="do">بساز</p>
+<pre class="ltr" dir="ltr">my-lab\07_build_dashboard.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>این فایل طولانی تر است؛ آرام و تکه تکه بنویس.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>می توانی منطق پارس و شمارش را از اسکریپت های قبل جمع کنی.</div>
+<div class="note">خروجی باید کنار همین فایل ساخته شود: <i class="en">dashboard.html</i></div>
+</div><div class="card">
+<h2>ایده خروجی</h2>
+<p class="do">پایتون اچ تی ام ال می نویسد؛ مرورگر رسم می کند</p>
+<pre class="ltr" dir="ltr">people / words / categories / voice seconds  ->  JSON in page  ->  Chart.js</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>پایتون نمودار نمی کشد؛ فقط داده و اسکلت صفحه را می سازد.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر اینترنت قطع باشد، سی دی ان چارت لود نمی شود و نمودار خالی می ماند.</div>
+</div><p class="say">نسخه کامل کارکننده در پوشه جواب ها هست. اول خودت بساز؛ اگر نهایی کار نکرد، خط به خط با جواب مقایسه کن.</p><div class="card">
+<h2>اجرا</h2>
+<p class="do">بزن</p>
+<pre class="ltr" dir="ltr">python 07_build_dashboard.py</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>باید مسیر فایل داشبورد چاپ شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر خطا درباره جیسون دیدی، داده غیرقابل سریال داری.</div>
+</div><div class="card">
+<h2>باز کردن داشبورد</h2>
+<p class="do">فایل ساخته شده را در مرورگر باز کن</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\my-lab\dashboard.html</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>چهار نمودار باید دیده شود: نفرات، واژه ها، دسته ها، ویس.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر صفحه هست ولی نمودار نه، کنسول مرورگر را باز کن و خطای اسکریپت را بخوان.</div>
+<div class="note">این همان تحویل واقعی است، نه بوم ادیتور.</div>
+</div>
+    <div class="navp"><a href="#s06a" data-go="s06a">قبلی</a><a href="#compare" data-go="compare">بعدی</a></div>
+  </article>
+  <article class="page" id="compare">
+    <p class="kicker">اسکریپت ۰۷</p>
+    <h1>فقط بعد از تلاش خودت</h1>
+<div class="card">
+<h2>پوشه جواب</h2>
+<p class="do">برای مقایسه باز کن، برای تقلب زودتر نه</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\solutions</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>هفت اسکریپت کامل و یک داشبورد نمونه اینجاست.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر خروجی ات نزدیک است ولی کد فرق دارد، اشکالی ندارد؛ مهم درستی منطق است.</div>
+</div><div class="card">
+<h2>داشبورد نمونه جواب</h2>
+<p class="do">اختیاری برای دیدن شکل نهایی</p>
+<pre class="ltr" dir="ltr">D:\workshops\chat-data-fromzero\solutions\dashboard.html</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>شکل کلی را می بینی.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>عددها باید با داده تمرین یکی باشد اگر منطق یکی باشد.</div>
+</div>
+    <div class="navp"><a href="#s07a" data-go="s07a">قبلی</a><a href="#pdf" data-go="pdf">بعدی</a></div>
+  </article>
+  <article class="page" id="pdf">
+    <p class="kicker">پیشرفته</p>
+    <h1>فصل اختیاری؛ برای داده تمرین لازم نیست</h1>
+<p class="say">بعضی خروجی های پی دی اف چت، متن فارسی را برعکس ذخیره می کنند. چشم تو درست می خواند، ولی رشته داخل فایل وارونه است.</p><div class="card">
+<h2>نصب اختیاری</h2>
+<p class="do">فقط اگر پی دی اف واقعی داری</p>
+<pre class="ltr" dir="ltr">pip install pymupdf</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>بسته نصب می شود.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر پیپ شناخته نشد، پاورشل را تازه باز کن یا از پای منهای ام پیپ استفاده کن.</div>
+</div><pre class="ltr" dir="ltr">python -m pip install pymupdf</pre><div class="card">
+<h2>استخراج خام</h2>
+<p class="do">ایده حداقلی</p>
+<pre class="ltr" dir="ltr">import fitz  # PyMuPDF
+doc = fitz.open("chat.pdf")
+text = "\n".join(page.get_text() for page in doc)
+open("chat_raw.txt", "w", encoding="utf-8").write(text)</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>یک فایل متنی خام می گیری.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر متن بی معنی بود، شاید نیاز به معکوس کردن خط های فارسی باشد.</div>
+</div><div class="card">
+<h2>وارون کردن محتاطانه</h2>
+<p class="do">فقط وقتی مطمئنی متن برعکس است</p>
+<pre class="ltr" dir="ltr">def maybe_rev(s):
+    # اگر بیشتر کاراکترهای فارسی به نظر وارونه اند، برگردان
+    return s[::-1]</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>روی داده تمرین این کارگاه اصلا لازم نیست.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر روی متن درست معکوس کنی، خوانا را خراب می کنی.</div>
+<div class="note">اول چند خط را چاپ کن و با چشم تصمیم بگیر.</div>
+</div>
+    <div class="navp"><a href="#compare" data-go="compare">قبلی</a><a href="#say" data-go="say">بعدی</a></div>
+  </article>
+  <article class="page" id="say">
+    <p class="kicker">روایت</p>
+    <h1>یک توضیح کوتاه و صادقانه</h1>
+<div class="card"><h2>متن پیشنهادی</h2><p class="do">با صدای خودت بگو، حفظ نکن</p><p class="say">یک خروجی متنی شبیه تلگرام داشتم. با پایتون خط به خط خواندم. خط هایی که شکل اسم و تاریخ داشتند به عنوان شروع پیام گرفتم. اسم های شبیه هم را با یک تابع کانن یکی کردم. متن ها را در یک لیست پیام جمع کردم. بعد تعداد پیام نفرات، واژه های پرتکرار، موضوع های ساده با واژه کلید، و مدت ویس ها را شمردم. در آخر همان عددها را داخل یک فایل اچ تی ام ال نوشتم که با چارت جی اس در مرورگر نمودار می کشد. برای تمرین از داده ساختگی کارگاه استفاده کردم تا حریم خصوصی حفظ شود.</p></div><div class="card">
+<h2>چه نگو</h2>
+<p class="do">ادعاهای غلط</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>نگو که یک مدل جادویی همه چیز را فهمیده بدون قاعده.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>نگو فایل خصوصی دیگران را بدون مجوز تحلیل کرده ای.</div>
+<div class="note">اگر از بوم ادیتور کمک گرفتی، بگو کمک تایپ و فکر بوده؛ خروجی همان فایل های خودت است.</div>
+</div>
+    <div class="navp"><a href="#pdf" data-go="pdf">قبلی</a><a href="#hw" data-go="hw">بعدی</a></div>
+  </article>
+  <article class="page" id="hw">
+    <p class="kicker">تمرین</p>
+    <h1>سه تغییر کوچک روی کار خودت</h1>
+<div class="card">
+<h2>یک · دسته تازه</h2>
+<p class="do">در اسکریپت پنجم یک دسته اضافه کن</p>
+<pre class="ltr" dir="ltr">"تغذیه": ["آب", "شیرینی", "قند"]</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>بعد از اجرا باید سطل تغذیه عدد غیرصفر بدهد.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر صفر بود، کلید را عین واژه های موجود در فایل تمرین بگذار.</div>
+</div><div class="card">
+<h2>دو · نفر تازه در کانن</h2>
+<p class="do">فرض کن اسم نمایشی جدید آمده</p>
+<pre class="ltr" dir="ltr">Ariya Coach</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>یک شاخه به کانن اضافه کن که این اسم را به برچسب دلخواهت برساند، یک خط ساختگی به کپی شخصی داده اضافه کن، دوباره بشمار.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>روی فایل اصلی data کارگاه را اگر خراب کردی، از روی نسخه سالم دوباره بردار.</div>
+</div><div class="card">
+<h2>سه · یک نمودار را جدا کن</h2>
+<p class="do">از داشبورد فقط نمودار نفرات را در فایل تازه بگذار</p>
+<pre class="ltr" dir="ltr">my-lab\people_only.html</pre>
+<div class="layer"><b>لایه ۱ — چه شد</b>یعنی فهمیده ای داده و رسم از هم جدا هستند.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>اگر هنوز اسکریپت هفتم را کامل نساخته ای، اول همان را تمام کن.</div>
+<div class="note">می توانی خروجی را دستی هم بسازی؛ مهم این است که <i class="en">Chart.js</i> یک دیتاست بگیرد.</div>
+</div><div class="card">
+<h2>پایان مسیر اصلی</h2>
+<p class="do">تیک صفحات را بزن و لب خودت را نگه دار</p>
+<div class="layer"><b>لایه ۱ — چه شد</b>اگر تا اینجا اجراها درست بوده، مسیر صفر تا نمودار را تمام کرده ای.</div>
+<div class="layer layer2"><b>لایه ۲ — اگر خراب شد</b>صفحات نخوانده را از دکمه بعدی نخوانده پیدا کن.</div>
+</div>
+    <div class="navp"><a href="#say" data-go="say">قبلی</a><span></span></div>
+  </article>
+</main>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
